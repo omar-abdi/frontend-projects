@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast , ToastContainer } from 'react-toastify'
 function Todoform() {
   const [task, setTask] = useState("")
   const [tasks, setTasks] = useState([])
-
+useEffect(()=>{
+    const saved = localStorage.getItem("tasks")
+    if(saved){
+    setTasks(JSON.parse(saved))
+    }
+},[])
   const handleAdd = () => {
     if (!task) {
         toast.error("Please Write Task")
@@ -17,6 +22,7 @@ function Todoform() {
     const newTask = tasks.filter((_,i)=>i  !=item)
     setTasks(newTask)
   }
+  localStorage.setItem("tasks" , JSON.stringify(tasks)) 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
