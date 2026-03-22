@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-
+import { toast , ToastContainer } from 'react-toastify'
 function Todoform() {
   const [task, setTask] = useState("")
   const [tasks, setTasks] = useState([])
 
   const handleAdd = () => {
-    if (!task) return
+    if (!task) {
+        toast.error("Please Write Task")
+    }
 
     setTasks([...tasks, task])
     setTask("")
@@ -51,7 +53,7 @@ function Todoform() {
         </ul>
 
       </div>
-
+<ToastContainer/>
     </div>
   )
 }
