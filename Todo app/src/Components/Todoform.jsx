@@ -7,6 +7,7 @@ function Todoform() {
   const handleAdd = () => {
     if (!task) {
         toast.error("Please Write Task")
+        return
     }
 
     setTasks([...tasks, task])
