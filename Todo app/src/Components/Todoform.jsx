@@ -13,6 +13,10 @@ function Todoform() {
     setTasks([...tasks, task])
     setTask("")
   }
+  const deleteTask = (item)=>{
+    const newTask = tasks.filter((_,i)=>i  !=item)
+    setTasks(newTask)
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
@@ -49,6 +53,12 @@ function Todoform() {
               className="bg-white/20 text-white p-3 rounded-xl flex justify-between items-center"
             >
               {t}
+             <button
+            onClick={()=> deleteTask(index)}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 rounded-xl transition text-2xl"
+          >
+            +
+          </button>
             </li>
           ))}
         </ul>
